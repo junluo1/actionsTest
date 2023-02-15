@@ -31,7 +31,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run a python script
         continue-on-error: true
-        run: python project/usePkg.py --output ref/output.xlsx
+        run: python project/usePkg.py
       - name: show files under cwd
         continue-on-error: true
         run: ls
@@ -58,6 +58,9 @@ jobs:
         continue-on-error: true
         run: .\project\test1\create2.ps
         working-directory: ${{ github.workspace }}
+      - name: show files under cwd
+        continue-on-error: true
+        run: ls
       - name: Save Output 3
         uses: actions/upload-artifact@v3
         with:
