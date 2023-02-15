@@ -33,7 +33,8 @@ jobs:
         continue-on-error: true
         run: python project/usePkg.py
       - name: show files under cwd
-        run: ls -al
+        continue-on-error: true
+        run: ls
         #working-directory: ${{ github.workspace }}
       - name: Save Output 1
         uses: actions/upload-artifact@v3
