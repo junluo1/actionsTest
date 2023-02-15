@@ -31,7 +31,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run a python script
         continue-on-error: true
-        run: python project/usePkg.py
+        run: python project/usePkg.py --output ref/output.xlsx
       - name: show files under cwd
         continue-on-error: true
         run: ls
@@ -39,8 +39,8 @@ jobs:
       - name: Save Output 1
         uses: actions/upload-artifact@v3
         with:
-          name: output
-          path: project/
+          name: output.xlsx
+          path: output.xlsx
         
       # Runs a single command using the runners shell
       - name: Run a bash script
@@ -51,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: output1
-          path: project/test1/text1.txt
+          path: text1.txt
 
       # Runs a set of commands using the runners shell
       - name: Run a bash script
@@ -62,4 +62,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: output2
-          path: project/test1/
+          path: text2.txt
