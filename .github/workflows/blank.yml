@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: output.xlsx
-          path: project/test1/
+          path: project/test1/output.xlsx
         
       # Runs a single command using the runners shell
       - name: Run a bash script
@@ -47,8 +47,8 @@ jobs:
       - name: Save Output 2
         uses: actions/upload-artifact@v3
         with:
-          name: text1.txt
-          path: project/test1/
+          name: output1
+          path: project/test1/text1.txt
 
       # Runs a set of commands using the runners shell
       - name: Run a bash script
@@ -58,5 +58,5 @@ jobs:
       - name: Save Output 3
         uses: actions/upload-artifact@v3
         with:
-          name: text2.txt
-          path: project/test1/
+          name: output2
+          path: project/test1/text2.txt
