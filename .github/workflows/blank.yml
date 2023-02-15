@@ -60,9 +60,9 @@ jobs:
         working-directory: ${{ github.workspace }}
       - name: show files under cwd
         continue-on-error: true
-        run: ls -la
+        run: ls
       - name: Save Output 3
         uses: actions/upload-artifact@v3
         with:
           name: output2
-          path: /
+          path: text2.txt
