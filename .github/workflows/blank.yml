@@ -30,13 +30,16 @@ jobs:
       - name: Run a python script
         continue-on-error: true
         run: python project/usePkg.py
+        working-directory: ${{ github.workspace }}
         
       # Runs a single command using the runners shell
       - name: Run a bash script
         continue-on-error: true
         run: .\project\test1\create1.sh
+        working-directory: ${{ github.workspace }}
 
       # Runs a set of commands using the runners shell
       - name: Run a bash script
         continue-on-error: true
         run: .\project\test1\create2.sh
+        working-directory: ${{ github.workspace }}
