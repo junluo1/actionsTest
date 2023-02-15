@@ -32,7 +32,9 @@ jobs:
       - name: Run a python script
         continue-on-error: true
         run: python project/usePkg.py
-        working-directory: ${{ github.workspace }}
+      - name: show files under cwd
+        run: ls -al
+        #working-directory: ${{ github.workspace }}
       - name: Save Output 1
         uses: actions/upload-artifact@v3
         with:
