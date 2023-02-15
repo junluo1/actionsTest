@@ -42,7 +42,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a bash script
         continue-on-error: true
-        run: .\project\test1\create1.sh
+        run: .\project\test1\create1.ps
         working-directory: ${{ github.workspace }}
       - name: Save Output 2
         uses: actions/upload-artifact@v3
@@ -53,7 +53,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a bash script
         continue-on-error: true
-        run: .\project\test1\create2.sh
+        run: .\project\test1\create2.ps
         working-directory: ${{ github.workspace }}
       - name: Save Output 3
         uses: actions/upload-artifact@v3
