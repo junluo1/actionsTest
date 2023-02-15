@@ -27,8 +27,8 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      #- name: Install dependencies
-        #run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
       - name: Run a python script
         continue-on-error: true
         run: python project/usePkg.py
@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: output.xlsx
-          path: project/test1/output.xlsx
+          path: project/output.xlsx
         
       # Runs a single command using the runners shell
       - name: Run a bash script
