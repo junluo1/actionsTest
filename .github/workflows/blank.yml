@@ -1,0 +1,62 @@
+# This is a basic workflow to help you get started with Actions
+name: CI
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+    - "ref/**"
+    
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+    env:
+      PYTHON_VERSION: '3.8'
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      #- name: Install dependencies
+        #run: pip install -r requirements.txt
+      - name: Run a python script
+        continue-on-error: true
+        run: python project/usePkg.py
+        working-directory: ${{ github.workspace }}
+      - name: Save Output 1
+        uses: actions/upload-artifact@v3
+        with:
+          name: output.xlsx
+          path: project/test1/
+        
+      # Runs a single command using the runners shell
+      - name: Run a bash script
+        continue-on-error: true
+        run: .\project\test1\create1.sh
+        working-directory: ${{ github.workspace }}
+      - name: Save Output 2
+        uses: actions/upload-artifact@v3
+        with:
+          name: text1.txt
+          path: project/test1/
+
+      # Runs a set of commands using the runners shell
+      - name: Run a bash script
+        continue-on-error: true
+        run: .\project\test1\create2.sh
+        working-directory: ${{ github.workspace }}
+      - name: Save Output 3
+        uses: actions/upload-artifact@v3
+        with:
+          name: text2.txt
+          path: project/test1/
