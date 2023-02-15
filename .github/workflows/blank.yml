@@ -22,7 +22,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Setup Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -36,8 +36,8 @@ jobs:
       - name: Save Output 1
         uses: actions/upload-artifact@v3
         with:
-          name: output.xlsx
-          path: project/output.xlsx
+          name: output
+          path: project/
         
       # Runs a single command using the runners shell
       - name: Run a bash script
@@ -59,4 +59,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: output2
-          path: project/test1/text2.txt
+          path: project/test1/
