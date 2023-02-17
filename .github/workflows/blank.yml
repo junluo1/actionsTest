@@ -39,7 +39,7 @@ jobs:
       - name: Save Output 1
         uses: actions/upload-artifact@v3
         with:
-          name: output.xlsx
+          name: output
           path: output.xlsx
         
       # Runs a single command using the runners shell
