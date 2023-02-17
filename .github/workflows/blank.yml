@@ -68,11 +68,11 @@ jobs:
           name: output2
           path: text2.txt
           
-  manual-trigger:
-    runs-on: windows-latest
-    steps:
-      - name: Manual Trigger
-        uses: peter-evans/workflow-dispatch@v2
-        with:
-          workflow: 'CI_patch'
-          token: ${{ secrets.actions_mannual_trigger }}
+  #manual-trigger:
+   # runs-on: windows-latest
+    #steps:
+     # - name: Manual Trigger
+      #  uses: peter-evans/workflow-dispatch@v2
+       # with:
+        #  workflow: 'CI_patch'
+         # token: ${{ secrets.actions_mannual_trigger }}
