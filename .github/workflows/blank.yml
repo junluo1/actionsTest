@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: CI
+name: CI_patch
 
 # Controls when the workflow will run
 on:
@@ -9,7 +9,7 @@ on:
     - "ref/**"
     
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  #workflow_dispatch:
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -66,3 +66,12 @@ jobs:
         with:
           name: output2
           path: text2.txt
+          
+  manual-trigger:
+    runs-on: windows-latest
+    steps:
+      - name: Manual Trigger
+        uses: peter-evans/workflow-dispatch@v2
+        with:
+          workflow: 'CI_patch'
+          token: ${{ secrets.actions_mannual_trigger }}
