@@ -17,7 +17,8 @@ on:
      - debug
     print_tags:
      description: 'True to print to STDOUT'
-     required: true
+     required: false
+     default: true
      type: boolean
     tags:
      description: 'test scenario tags'
