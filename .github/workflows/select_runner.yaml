@@ -1,0 +1,46 @@
+name: My Workflow
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      runner:
+        description: 'Select the runner to use'
+        required: false
+        default: 'default'
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1
+        run: echo "This is job 1 running on the default runner"
+
+  job2:
+    runs-on: windows-latest
+    steps:
+      - name: Step 1
+        run: echo "This is job 2 running on a Windows runner"
+
+  job3:
+    runs-on: macos-latest
+    steps:
+      - name: Step 1
+        run: echo "This is job 3 running on a macOS runner"
+
+  select-runner:
+    needs: []
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask for input
+        id: input
+        run: |
+          echo "Which runner do you want to use?"
+          echo "::set-output name=runner::$(read -r runner && echo $runner)"
+      - name: Run selected job
+        if: ${{ steps.input.outputs.runner == 'job2' }}
+        uses: actions/checkout@v2
+        with:
+          ref: main
+        run: echo "This is job 2 running on a Windows runner"
