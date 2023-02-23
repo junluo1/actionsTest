@@ -1,0 +1,30 @@
+name: My Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      my-input:
+        description: 'My input'
+        required: true
+        type: object
+        properties:
+          is_awesome:
+            description: 'Is awesome?'
+            required: true
+            type: boolean
+          options:
+            description: 'Options'
+            required: true
+            type: object
+            properties:
+              is_enabled:
+                description: 'Is enabled?'
+                required: true
+                type: boolean
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1
+        run: echo "Is awesome? ${github.event.inputs.my-input.is_awesome} | Is enabled? ${github.event.inputs.my-input.options.is_enabled}"
