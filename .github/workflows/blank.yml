@@ -4,9 +4,10 @@ name: CI
 # Controls when the workflow will run
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "junluo1-patch-1" ]
     paths:
     - "ref/**"
+    - "project/test1/**"
     
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
