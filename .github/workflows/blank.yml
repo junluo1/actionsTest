@@ -4,9 +4,8 @@ name: CI
 # Controls when the workflow will run
 on:
   push:
-    branches: [ "main", "junluo1-patch-1" ]
+    branches: ["junluo1-patch-1"]
     paths:
-    - "ref/**"
     - "project/test1/**"
     
   # Allows you to run this workflow manually from the Actions tab
@@ -28,18 +27,9 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - name: show files under cwd
-        continue-on-error: true
-        run: ls
-        #working-directory: ${{ github.workspace }}
-      - name: Save Output 1
-        uses: actions/upload-artifact@v3
-        with:
-          name: output.xlsx
-          path: output.xlsx
         
       # Runs a single command using the runners shell
-      - name: Run a bash script
+      - name: Run a python script
         continue-on-error: true
         run: python project\test1\create1.py
         working-directory: ${{ github.workspace }}
@@ -50,7 +40,7 @@ jobs:
           path: text1.txt
 
       # Runs a set of commands using the runners shell
-      - name: Run a bash script
+      - name: Run a python script
         continue-on-error: true
         run: python project\test1\create2.py
         working-directory: ${{ github.workspace }}
